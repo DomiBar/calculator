@@ -8,8 +8,8 @@ def add(components):
     return result
 
 
-def subtract(variable1, variable2):
-    return variable1-variable2
+def subtract(components):
+    return components[0]-components[1]
 
 
 def multiply(components):
@@ -19,19 +19,29 @@ def multiply(components):
     return result
 
 
-def divide(variable1, variable2):
-    return variable1/variable2
+def divide(components):
+    return components[0]/components[1]
 
 
-def take_components(variable1, variable2):
-    components = [variable1, variable2]
-    res = input("Czy dodać kolejny składnik [y]")
-    while res == 'y':
+def take_components(res):
+    components=[]
+
+    for i in range(2):
         component = input(f"Podaj składnik {len(components)+1}: ")
         try:
             components.append(float(component))
         except:
             print("Podany składnik nie jest liczbą")
             exit()
+
+    if res==1 or res==3:
         res = input("Czy dodać kolejny składnik [y]")
+        while res == 'y':
+            component = input(f"Podaj składnik {len(components)+1}: ")
+            try:
+                components.append(float(component))
+            except:
+                print("Podany składnik nie jest liczbą")
+                exit()
+            res = input("Czy dodać kolejny składnik [y]")
     return components
